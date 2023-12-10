@@ -1,0 +1,1 @@
+curl --silent "https://crt.sh/?q=""$1" | grep "<TD>" | grep -v white-space | awk -F'<TD>|<BR>' '{ for (i=2; i<=NF; i++) print $i }' | cut -d "<" -f1 | sort -u | uniq | xargs -l host | grep -v "not found" | grep -v "timed out" | sort -u
